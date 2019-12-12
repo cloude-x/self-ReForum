@@ -39,7 +39,7 @@ class AppContainer extends Component {
 
     let newCurrentForum = '';
     if (params.forum) newCurrentForum = params.forum;
-    else if (forums) newCurrentForum = forums[0].forum_slug;
+    else if (forums) newCurrentForum = forums[0] && forums[0].forum_slug;
 
     // update current forum if necessery
     if (newCurrentForum !== currentForum) updateCurrentForum(newCurrentForum);
@@ -53,10 +53,6 @@ class AppContainer extends Component {
       return (
         <div>
           <Helmet><title>ReForum</title></Helmet>
-
-          <div className={styles.gitForkTag}>
-            <a className={styles.gitLink} href="https://github.com/shoumma/ReForum" target="_blank">Fork on Github</a>
-          </div>
 
           <Header />
           {this.props.children}
